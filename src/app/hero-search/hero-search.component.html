@@ -1,0 +1,17 @@
+<div id="search-component">
+  <h4><label for="search-box">Hero search</label></h4>
+
+  <input type="text" id="search-box" #searchBox (input)="search(searchBox.value)"/>
+
+  <ul class="search-result">
+    <!--heroes$ вместо heroes, чтоб указать, что это не массив, а Observable.
+    поскольку *ngFor не работает с Observable, нужно использовать пайп и за
+    ним указать async. при такой конструкции происходит автоматическая подписка
+    на Observable, поэтому в компоненте не нужно будет subscribe-->
+    <li *ngFor="let hero of heroes$ | async">
+      <a routerLink="/detail/{{hero.id}}">
+        {{hero.name}}
+      </a>
+    </li>
+  </ul>
+</div>

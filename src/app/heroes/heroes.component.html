@@ -1,0 +1,23 @@
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <!--*ngFor - аналог map для отрисовки массива данных.
+  (click) - обработчик события. [class.selected] - здесь мы привязываем
+  указанный класс с помощью "[]" к значению, высчитываемому справа от "=".
+  при помощи интерполяции "{{}}" мы отрисовываем значение указанного параметра-->
+  <li *ngFor="let hero of heroes">
+    <a routerLink="/detail/{{hero.id}}">
+      <span class="badge">{{hero.id}}</span> {{hero.name}}
+    </a>
+    <button class="delete" title="delete hero" (click)="delete(hero)">x</button>
+  </li>
+</ul>
+<div>
+  <label>
+    Hero name:
+    <input #heroName />
+  </label>
+  <button (click)="add(heroName.value); heroName.value=''">
+    add
+  </button>
+</div>
+

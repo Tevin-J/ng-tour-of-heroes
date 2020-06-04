@@ -1,0 +1,19 @@
+<!--с помощью *ngIf мы делаем условный рендеринг. в данном случае,
+если в шаблон пришло свойство hero, то данная разметка отрисуется-->
+<div *ngIf="hero">
+  <!--с помощью пайпов мы можем каким-либо образом настраивать
+  формат тех данных, которые мы хотим отрисовать-->
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>
+      name:
+      <!--[(ngModel)] позволяет организовать 2-направленный поток данных -
+      из инпута в компоненту и из компоненты в шаблон-->
+      <input type="text" placeholder="name" [(ngModel)]="hero.name"/>
+    </label>
+  </div>
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+</div>
+
